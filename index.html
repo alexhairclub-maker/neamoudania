@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Νέα Μουδανιά — Τοπικός Οδηγός</title>
+<meta name="description" content="Οδηγός για τα Νέα Μουδανιά Χαλκιδικής: παραλίες, φαγητό, διαμονή και δραστηριότητες.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,72,400;0,72,500;0,72,600;1,72,400;1,72,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14324a;
+    --ink-soft:#3d5568;
+    --sea:#0e7c9e;
+    --sea-deep:#0a5c76;
+    --sand:#f4efe3;
+    --sand-deep:#ebe2cd;
+    --white:#fffdf8;
+    --terracotta:#c1622d;
+    --olive:#6b7a3d;
+    --olive-soft:#8b9a5b;
+    --line:rgba(20,50,74,0.14);
+    --shadow:0 1px 0 rgba(20,50,74,0.06);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--sand);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Newsreader', serif;
+    font-weight:500;
+    margin:0;
+    color:var(--ink);
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  @media(max-width:640px){ .wrap{padding:0 20px;} }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(244,239,227,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:72px;
+  }
+  .brand{
+    font-family:'Newsreader', serif;
+    font-size:22px;
+    font-weight:600;
+    letter-spacing:0.01em;
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+  .brand .dot{color:var(--terracotta);}
+  .nav-links{
+    display:flex;
+    gap:36px;
+    font-size:15px;
+    font-weight:500;
+  }
+  .nav-links a{
+    position:relative;
+    padding:6px 0;
+    color:var(--ink-soft);
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--sea-deep);}
+  .nav-toggle{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:8px;
+  }
+  .nav-toggle span{width:24px;height:2px;background:var(--ink);}
+  @media(max-width:800px){
+    .nav-links{
+      position:absolute;
+      top:72px;left:0;right:0;
+      background:var(--white);
+      flex-direction:column;
+      gap:0;
+      border-bottom:1px solid var(--line);
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .3s ease;
+    }
+    .nav-links.open{max-height:320px;}
+    .nav-links a{padding:16px 20px;display:block;border-top:1px solid var(--line);}
+    .nav-toggle{display:flex;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:64px 0 0;
+    overflow:hidden;
+  }
+  .hero-inner{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:48px;
+    align-items:center;
+    padding-bottom:40px;
+  }
+  @media(max-width:860px){
+    .hero-inner{grid-template-columns:1fr;gap:28px;}
+  }
+  .eyebrow{
+    font-size:14px;
+    color:var(--sea-deep);
+    font-weight:600;
+    margin-bottom:18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow .rule{width:28px;height:1px;background:var(--terracotta);display:inline-block;}
+  .hero h1{
+    font-size:56px;
+    line-height:1.08;
+    font-style:italic;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+  @media(max-width:640px){ .hero h1{font-size:38px;} }
+  .hero p.lede{
+    margin-top:24px;
+    font-size:19px;
+    color:var(--ink-soft);
+    max-width:480px;
+  }
+  .hero-cta{
+    margin-top:32px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:13px 22px;
+    border-radius:3px;
+    font-weight:600;
+    font-size:15px;
+    border:1px solid transparent;
+  }
+  .btn-primary{background:var(--sea-deep);color:var(--white);}
+  .btn-primary:hover{background:var(--ink);}
+  .btn-ghost{border-color:var(--line);color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--ink);}
+
+  .coast-illustration{width:100%;height:auto;}
+
+  .hero-strip{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:var(--sand-deep);
+  }
+  .hero-strip .wrap{
+    display:flex;
+    gap:48px;
+    padding:18px 32px;
+    flex-wrap:wrap;
+    font-size:14px;
+    color:var(--ink-soft);
+  }
+  .hero-strip strong{color:var(--ink);font-weight:600;}
+
+  /* ---------- SECTION SHELLS ---------- */
+  .section{
+    padding:96px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .section.alt{background:var(--white);}
+  .section-head{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    margin-bottom:56px;
+  }
+  @media(max-width:760px){ .section-head{grid-template-columns:1fr;gap:16px;} }
+  .section-head h2{
+    font-size:38px;
+    font-style:italic;
+    line-height:1.15;
+  }
+  .section-head .desc{
+    color:var(--ink-soft);
+    font-size:16.5px;
+    padding-top:6px;
+  }
+  .section-number{
+    font-family:'Newsreader', serif;
+    font-style:italic;
+    color:var(--terracotta);
+    font-size:15px;
+    margin-bottom:10px;
+    display:block;
+  }
+
+  /* ---------- NEA ---------- */
+  .news-list{
+    display:flex;
+    flex-direction:column;
+  }
+  .news-item{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:28px;
+    padding:26px 0;
+    border-top:1px solid var(--line);
+  }
+  .news-item:last-child{border-bottom:1px solid var(--line);}
+  @media(max-width:760px){
+    .news-item{grid-template-columns:1fr;gap:6px;}
+  }
+  .news-date{
+    color:var(--terracotta);
+    font-size:14px;
+    font-weight:600;
+    padding-top:3px;
+  }
+  .news-title{
+    font-family:'Newsreader', serif;
+    font-size:21px;
+    font-weight:500;
+    margin-bottom:6px;
+  }
+  .news-text{color:var(--ink-soft);font-size:15.5px;}
+
+  /* ---------- BEACHES ---------- */
+  .beach-list{
+    display:flex;
+    flex-direction:column;
+  }
+  .beach-row{
+    display:grid;
+    grid-template-columns:220px 110px 1fr;
+    gap:28px;
+    align-items:start;
+    padding:26px 0;
+    border-top:1px solid var(--line);
+  }
+  .beach-row:last-child{border-bottom:1px solid var(--line);}
+  @media(max-width:760px){
+    .beach-row{grid-template-columns:1fr;gap:8px;}
+  }
+  .beach-name{
+    font-family:'Newsreader', serif;
+    font-size:22px;
+    font-weight:500;
+  }
+  .beach-name .km{
+    display:block;
+    font-family:'Work Sans',sans-serif;
+    font-size:13px;
+    color:var(--ink-soft);
+    font-weight:400;
+    margin-top:4px;
+  }
+  .tag{
+    display:inline-flex;
+    align-items:center;
+    height:26px;
+    padding:0 12px;
+    border-radius:999px;
+    font-size:12.5px;
+    font-weight:600;
+    white-space:nowrap;
+  }
+  .tag-organized{background:rgba(14,124,158,0.12);color:var(--sea-deep);}
+  .tag-quiet{background:rgba(107,122,61,0.14);color:var(--olive);}
+  .tag-family{background:rgba(193,98,45,0.13);color:var(--terracotta);}
+  .beach-desc{color:var(--ink-soft);font-size:15.5px;}
+
+  /* ---------- FOOD ---------- */
+  .food-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:0 56px;
+  }
+  @media(max-width:760px){ .food-grid{grid-template-columns:1fr;} }
+  .food-cat{margin-bottom:44px;}
+  .food-cat h3{
+    font-size:16px;
+    font-family:'Work Sans',sans-serif;
+    font-weight:700;
+    color:var(--sea-deep);
+    margin-bottom:16px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--line);
+  }
+  .food-item{
+    padding:14px 0;
+    border-bottom:1px dashed var(--line);
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .food-item:last-child{border-bottom:none;}
+  .food-item .name{font-weight:600;}
+  .food-item .note{
+    color:var(--ink-soft);
+    font-size:14.5px;
+    text-align:right;
+    max-width:230px;
+  }
+
+  /* ---------- STAY ---------- */
+  .stay-tiers{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    border:1px solid var(--line);
+  }
+  @media(max-width:760px){ .stay-tiers{grid-template-columns:1fr;} }
+  .stay-tier{
+    padding:32px 28px;
+    border-right:1px solid var(--line);
+  }
+  .stay-tier:last-child{border-right:none;}
+  @media(max-width:760px){
+    .stay-tier{border-right:none;border-bottom:1px solid var(--line);}
+    .stay-tier:last-child{border-bottom:none;}
+  }
+  .stay-tier .level{
+    font-size:13px;
+    font-weight:700;
+    color:var(--terracotta);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    margin-bottom:6px;
+  }
+  .stay-tier h3{font-size:21px;margin-bottom:12px;font-family:'Newsreader',serif;font-weight:500;}
+  .stay-tier p{color:var(--ink-soft);font-size:15px;margin:0;}
+  .stay-note{
+    margin-top:28px;
+    padding:20px 24px;
+    background:var(--sand-deep);
+    border-left:3px solid var(--sea);
+    font-size:15px;
+    color:var(--ink-soft);
+  }
+  .stay-note strong{color:var(--ink);}
+
+  /* ---------- ACTIVITIES ---------- */
+  .activity-groups{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:44px;
+  }
+  @media(max-width:760px){ .activity-groups{grid-template-columns:1fr;} }
+  .activity-group h3{
+    font-size:15px;
+    font-weight:700;
+    font-family:'Work Sans',sans-serif;
+    margin-bottom:18px;
+    color:var(--ink);
+  }
+  .activity-item{
+    display:flex;
+    gap:12px;
+    padding:12px 0;
+    border-top:1px solid var(--line);
+    align-items:flex-start;
+  }
+  .activity-item svg{flex-shrink:0;margin-top:2px;}
+  .activity-item .t{font-weight:600;font-size:15px;}
+  .activity-item .d{font-size:14px;color:var(--ink-soft);margin-top:2px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:56px 0 40px;
+    background:var(--ink);
+    color:var(--sand);
+  }
+  .footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:24px;
+  }
+  footer .brand{color:var(--sand);}
+  footer .brand .dot{color:var(--terracotta);}
+  footer p{color:rgba(244,239,227,0.6);font-size:14px;margin:8px 0 0;}
+  .footer-branch{opacity:.5;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">Νέα Μουδανιά<span class="dot">.</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#nea">Νέα</a>
+      <a href="#paralies">Παραλίες</a>
+      <a href="#fagito">Φαγητό</a>
+      <a href="#diamoni">Διαμονή</a>
+      <a href="#drastiriotites">Δραστηριότητες</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Μενού">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <div class="eyebrow"><span class="rule"></span>Χαλκιδική</div>
+        <h1>Εκεί που ο ελαιώνας<br>συναντά το Αιγαίο</h1>
+        <p class="lede">Η μεγαλύτερη παραλιακή πόλη της Χαλκιδικής, με δύο χιλιόμετρα αμμουδιά, ζωντανό λιμάνι και μια αγορά που δεν κοιμάται το καλοκαίρι. Ένας οδηγός φτιαγμένος από κάποιον που ζει εδώ.</p>
+        <div class="hero-cta">
+          <a href="#paralies" class="btn btn-primary">Δες τις παραλίες</a>
+          <a href="#fagito" class="btn btn-ghost">Πού να φας</a>
+        </div>
+      </div>
+      <div>
+        <svg class="coast-illustration" viewBox="0 0 480 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="378" cy="70" r="34" fill="#c1622d" opacity="0.85"/>
+          <g stroke="#c1622d" stroke-width="2.5" opacity="0.55" stroke-linecap="round">
+            <line x1="378" y1="14" x2="378" y2="2"/>
+            <line x1="414" y1="26" x2="422" y2="16"/>
+            <line x1="442" y1="70" x2="456" y2="70"/>
+            <line x1="414" y1="114" x2="422" y2="124"/>
+            <line x1="342" y1="26" x2="334" y2="16"/>
+          </g>
+          <path d="M0 150 C 60 120, 120 170, 190 140 C 260 112, 300 150, 360 130 C 410 114, 450 140, 480 128" stroke="#6b7a3d" stroke-width="3" fill="none" opacity="0.55"/>
+          <g opacity="0.8">
+            <ellipse cx="150" cy="128" rx="5" ry="9" fill="#6b7a3d"/>
+            <ellipse cx="162" cy="120" rx="5" ry="9" fill="#8b9a5b"/>
+            <ellipse cx="140" cy="118" rx="5" ry="9" fill="#8b9a5b"/>
+          </g>
+          <path d="M60 210 L100 178 L140 210 Z" fill="#14324a" opacity="0.9"/>
+          <rect x="96" y="150" width="2" height="30" fill="#14324a" opacity="0.9"/>
+          <path d="M98 155 L98 172 L118 168 Z" fill="#0e7c9e" opacity="0.9"/>
+          <path d="M0 230 C 40 222, 80 236, 130 226 C 190 214, 230 234, 290 224 C 350 214, 400 232, 480 222 L480 380 L0 380 Z" fill="#0e7c9e" opacity="0.85"/>
+          <path d="M0 250 C 50 242, 90 258, 150 248 C 210 238, 260 256, 320 246 C 380 236, 420 252, 480 244 L480 380 L0 380 Z" fill="#0a5c76"/>
+          <path d="M300 262 L340 240 L370 262 Z" fill="#14324a" opacity="0.85"/>
+          <rect x="336" y="218" width="2" height="24" fill="#14324a" opacity="0.85"/>
+          <path d="M338 222 L338 236 L354 233 Z" fill="#c1622d" opacity="0.9"/>
+        </svg>
+      </div>
+    </div>
+    <div class="hero-strip">
+      <div class="wrap">
+        <span><strong>2 χλμ</strong> παραλία με γαλάζια σημαία</span>
+        <span><strong>50 χλμ</strong> από αεροδρόμιο Θεσσαλονίκης</span>
+        <span><strong>Τρίτη–Σάββατο</strong> ζωντανή λαϊκή αγορά</span>
+        <span><strong>Μεγαλύτερο</strong> αλιευτικό λιμάνι Β. Ελλάδας</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ΝΕΑ -->
+  <section class="section alt" id="nea">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="section-number">Νέα</span>
+          <h2>Ό,τι αξίζει να ξέρεις αυτή την περίοδο</h2>
+        </div>
+        <p class="desc">Ανακοινώσεις, εκδηλώσεις και ό,τι νέο υπάρχει στα Μουδανιά.</p>
+      </div>
+
+      <div class="news-list">
+        <div class="news-item">
+          <div class="news-date">27 Σεπτεμβρίου 2026</div>
+          <div>
+            <div class="news-title">Καλωσορίσατε στον οδηγό των Μουδανιών</div>
+            <div class="news-text">Ξεκινάμε αυτόν τον οδηγό για την πόλη — παραλίες, φαγητό, διαμονή, δραστηριότητες και ό,τι νέο αξίζει να μαθευτεί. Θα ενημερώνεται τακτικά.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ΠΑΡΑΛΙΕΣ -->
+  <section class="section" id="paralies">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="section-number">Παραλίες</span>
+          <h2>Από την πολυσύχναστη παραλιακή μέχρι τις κρυμμένες γωνιές</h2>
+        </div>
+        <p class="desc">Η κεντρική παραλία είναι οργανωμένη και γεμάτη ζωή, αλλά λίγα χιλιόμετρα δυτικά η ακτή γίνεται πιο ήσυχη — ιδανική για όσους θέλουν βουτιά χωρίς πλήθος.</p>
+      </div>
+
+      <div class="beach-list">
+        <div class="beach-row">
+          <div class="beach-name">Παραλία Ν. Μουδανιών<span class="km">Στο κέντρο της πόλης</span></div>
+          <div><span class="tag tag-family">Οικογενειακή</span></div>
+          <div class="beach-desc">Αμμώδης, ρηχή και οργανωμένη σε όλο της το μήκος, με ξαπλώστρες, beach bars και θαλάσσια σπορ. Η καρδιά του καλοκαιρινού πηγαιμού.</div>
+        </div>
+        <div class="beach-row">
+          <div class="beach-name">Παραλία Ελαιώνα<span class="km">Δυτικά της πόλης</span></div>
+          <div><span class="tag tag-organized">Γαλάζια σημαία</span></div>
+          <div class="beach-desc">Λευκή αμμουδιά και καθαρά νερά περιτριγυρισμένα από πεύκα. Πιο ήσυχη από την κεντρική, αγαπημένη για μια ολόκληρη μέρα στη σκιά.</div>
+        </div>
+        <div class="beach-row">
+          <div class="beach-name">Παραλία Διονυσίου<span class="km">Λίγα χλμ έξω</span></div>
+          <div><span class="tag tag-quiet">Ήσυχη</span></div>
+          <div class="beach-desc">Απλή και αυθεντική, χωρίς φανφάρες. Των ντόπιων το στέκι για βραδινή βόλτα και μπάνιο χωρίς κόσμο.</div>
+        </div>
+        <div class="beach-row">
+          <div class="beach-name">Πορταριά<span class="km">Έξω από τον οικισμό</span></div>
+          <div><span class="tag tag-quiet">Απομονωμένη</span></div>
+          <div class="beach-desc">Για όσους θέλουν να αφήσουν την πόλη πίσω τους για λίγες ώρες. Πιο δύσβατη, πιο ήσυχη, πιο δική σου.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ΦΑΓΗΤΟ -->
+  <section class="section alt" id="fagito">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="section-number">Φαγητό</span>
+          <h2>Φρέσκο ψάρι από την ιχθυόσκαλα, στο πιάτο σου το ίδιο βράδυ</h2>
+        </div>
+        <p class="desc">Τα Μουδανιά έχουν το μεγαλύτερο αλιευτικό λιμάνι της Βόρειας Ελλάδας — αυτό φαίνεται στο τραπέζι. Ό,τι πιάνεται το πρωί, σερβίρεται το βράδυ.</p>
+      </div>
+
+      <div class="food-grid">
+        <div>
+          <div class="food-cat">
+            <h3>Ψαροταβέρνες στο μουράγιο</h3>
+            <div class="food-item"><span class="name">Δεσπότης</span><span class="note">Ιστορική ψαροταβέρνα, δίπλα στη μαρίνα</span></div>
+            <div class="food-item"><span class="name">Bottice</span><span class="note">Οικογενειακό, θέα θάλασσα, ψάρι &amp; κρεατικά</span></div>
+            <div class="food-item"><span class="name">Στέκια της παραλιακής</span><span class="note">Ψαροταβέρνες σε σειρά κατά μήκος του λιμανιού</span></div>
+          </div>
+          <div class="food-cat">
+            <h3>Τοπικά προϊόντα</h3>
+            <div class="food-item"><span class="name">Μέλι Χαλκιδικής</span><span class="note">Από τους ελαιώνες &amp; τα πευκοδάση της περιοχής</span></div>
+            <div class="food-item"><span class="name">Τυροκομικά</span><span class="note">Φρέσκα, από μικρές τοπικές μονάδες</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="food-cat">
+            <h3>Μεζεδοπωλεία &amp; ουζερί</h3>
+            <div class="food-item"><span class="name">Τσιπουράδικα</span><span class="note">Γύρω από την Αγίου Γεωργίου, για ούζο &amp; μεζέ</span></div>
+            <div class="food-item"><span class="name">Πιτσαρίες με ξυλόφουρνο</span><span class="note">Στην παραλία Διονυσίου, χειροποίητη ζύμη</span></div>
+          </div>
+          <div class="food-cat">
+            <h3>Βραδινή έξοδος</h3>
+            <div class="food-item"><span class="name">Παραλιακή</span><span class="note">Καφέ &amp; μπαρ με θέα στο λιμάνι</span></div>
+            <div class="food-item"><span class="name">Πλατεία Βασματζίδη</span><span class="note">Κεντρικό σημείο συνάντησης το βράδυ</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ΔΙΑΜΟΝΗ -->
+  <section class="section" id="diamoni">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="section-number">Διαμονή</span>
+          <h2>Βάση στο μεγαλύτερο εμπορικό κέντρο του νομού</h2>
+        </div>
+        <p class="desc">Τα Μουδανιά είναι από τα λίγα μέρη στη Χαλκιδική όπου μένεις δίπλα στη θάλασσα, αλλά έχεις τράπεζα, φαρμακείο και σούπερ μάρκετ στη διαδρομή σου.</p>
+      </div>
+
+      <div class="stay-tiers">
+        <div class="stay-tier">
+          <div class="level">Οικονομική</div>
+          <h3>Studios &amp; δωμάτια</h3>
+          <p>Απλά καταλύματα και studios, πολλά με θέα ή πρόσβαση με τα πόδια στην παραλία. Καλή επιλογή για σύντομες διακοπές ή οικογένειες με προσεκτικό προϋπολογισμό.</p>
+        </div>
+        <div class="stay-tier">
+          <div class="level">Μεσαία κατηγορία</div>
+          <h3>Ξενοδοχεία 3–4 αστέρων</h3>
+          <p>Οι περισσότερες επιλογές συγκεντρώνονται εδώ — δωμάτια με πρωινό ή ημιδιατροφή, κοντά στην παραλιακή και στο κέντρο της πόλης.</p>
+        </div>
+        <div class="stay-tier">
+          <div class="level">Άνετη διαμονή</div>
+          <h3>Βίλες &amp; διαμερίσματα</h3>
+          <p>Ιδιωτικές βίλες και μεγαλύτερα διαμερίσματα, κατάλληλα για παρέες ή οικογένειες που θέλουν χώρο και ανεξαρτησία.</p>
+        </div>
+      </div>
+
+      <div class="stay-note"><strong>Πρακτικό tip:</strong> Η πόλη είναι μόλις 50 χλμ από το αεροδρόμιο «Μακεδονία» της Θεσσαλονίκης — λιγότερο από μία ώρα διαδρομή, χωρίς να χρειάζεται να μπεις μέσα στην πόλη της Θεσσαλονίκης.</div>
+    </div>
+  </section>
+
+  <!-- ΔΡΑΣΤΗΡΙΟΤΗΤΕΣ -->
+  <section class="section alt" id="drastiriotites">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="section-number">Δραστηριότητες</span>
+          <h2>Θάλασσα το πρωί, ελαιώνας το απόγευμα</h2>
+        </div>
+        <p class="desc">Πέρα από την παραλία, τα Μουδανιά είναι σημείο εκκίνησης για ό,τι θέλεις να ανακαλύψεις στη Χαλκιδική.</p>
+      </div>
+
+      <div class="activity-groups">
+        <div class="activity-group">
+          <h3>Στη θάλασσα</h3>
+          <div class="activity-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 17c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0" stroke="#0e7c9e" stroke-width="1.8" stroke-linecap="round"/><path d="M3 12c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0" stroke="#0e7c9e" stroke-width="1.8" stroke-linecap="round" opacity=".5"/></svg>
+            <div><div class="t">Ενοικίαση σκάφους / ταχύπλοου</div><div class="d">Βόλτες κατά μήκος της ακτής της Χαλκιδικής</div></div>
+          </div>
+          <div class="activity-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#0e7c9e" stroke-width="1.8"/><path d="M9 9c0 3 1.5 5 3 5s3-2 3-5" stroke="#0e7c9e" stroke-width="1.8"/></svg>
+            <div><div class="t">Κατάδυση &amp; σνόρκελινγκ</div><div class="d">Καθαρά νερά στην Ελαιώνα και τα δυτικά</div></div>
+          </div>
+          <div class="activity-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 15l16-6-6 16-2-8-8-2z" stroke="#0e7c9e" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            <div><div class="t">Καγιάκ &amp; ψάρεμα</div><div class="d">Ενοικιάσεις εξοπλισμού κατά μήκος της παραλίας</div></div>
+          </div>
+        </div>
+        <div class="activity-group">
+          <h3>Στη στεριά</h3>
+          <div class="activity-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="8" rx="3" ry="5" stroke="#6b7a3d" stroke-width="1.8"/><path d="M12 13v8" stroke="#6b7a3d" stroke-width="1.8"/></svg>
+            <div><div class="t">Βόλτα στον ελαιώνα</div><div class="d">Πίσω από την πόλη, χιλιάδες ελαιόδεντρα με μονοπάτια</div></div>
+          </div>
+          <div class="activity-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="7" cy="17" r="3" stroke="#6b7a3d" stroke-width="1.8"/><circle cx="17" cy="17" r="3" stroke="#6b7a3d" stroke-width="1.8"/><path d="M7 17l4-9h3l3 9M11 8h2" stroke="#6b7a3d" stroke-width="1.8"/></svg>
+            <div><div class="t">Ποδήλατο στην παραλιακή</div><div class="d">Δρόμος κατά μήκος της ακτής, επίπεδος και εύκολος</div></div>
+          </div>
+          <div class="activity-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 8h16M4 12h16M4 16h10" stroke="#6b7a3d" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <div><div class="t">Λαϊκή αγορά</div><div class="d">Τρίτη έως Σάββατο, τοπικά προϊόντα και ψώνια</div></div>
+          </div>
+        </div>
+        <div class="activity-group">
+          <h3>Εξορμήσεις</h3>
+          <div class="activity-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7h7l-6 5 2 8-6-4-6 4 2-8-6-5h7z" stroke="#c1622d" stroke-width="1.4" stroke-linejoin="round"/></svg>
+            <div><div class="t">Κασσάνδρα &amp; Σιθωνία</div><div class="d">Τα δύο άλλα «πόδια» της Χαλκιδικής, μία ανάσα μακριά</div></div>
+          </div>
+          <div class="activity-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 20V9l7-5 7 5v11" stroke="#c1622d" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 20v-6h6v6" stroke="#c1622d" stroke-width="1.6"/></svg>
+            <div><div class="t">Μαρίνα &amp; λιμάνι</div><div class="d">Βόλτα ανάμεσα σε ψαρόβαρκες και σκάφη αναψυχής</div></div>
+          </div>
+          <div class="activity-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 20c4-10 12-10 16-16" stroke="#c1622d" stroke-width="1.6" stroke-linecap="round"/><path d="M14 4h4v4" stroke="#c1622d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><div class="t">Ημερήσιες εκδρομές</div><div class="d">Πολύγυρος, Άγιον Όρος (θαλάσσια περιήγηση), Ουρανούπολη</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <a href="#top" class="brand">Νέα Μουδανιά<span class="dot">.</span></a>
+      <p>Ένας οδηγός από κάποιον που ζει και δουλεύει εδώ.</p>
+    </div>
+    <p class="footer-branch">Ελιγμών 5, 63200 Νέα Μουδανιά</p>
+  </div>
+</footer>
+
+<script>
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function(){
+    links.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ links.classList.remove('open'); });
+  });
+</script>
+
+</body>
+</html>
